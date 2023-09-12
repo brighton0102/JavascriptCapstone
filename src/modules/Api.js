@@ -40,9 +40,6 @@ export function fetchAndRenderData() {
           movieDiv.appendChild(buttonsDiv);
           movieList.appendChild(movieDiv);
         });
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
       });
   });
 }

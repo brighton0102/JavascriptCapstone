@@ -32,7 +32,7 @@ main {
 }
 
 h2 {
-  color: #ffffff;
+  color: #fff;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 2rem;
@@ -79,7 +79,7 @@ h2 {
   font-weight: 400;
   color: #5799ef;
   font-size: 1rem;
-}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AACJ;;AAEA;EACI,yBAAA;AACJ;;AAEA;EACI,cAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AACJ;;AAEA;EACI,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AACJ;;AAEA;EACI,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AACJ;;AAEA;EACI,yBAAA;AACJ;;AAEA;EACI,yBAAA;AACJ;;AAEA;;EAEI,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AACJ","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nmain {\r\n    background-color: #121212;\r\n}\r\n\r\nh2 {\r\n    color: #ffffff;\r\n    font-family: 'Roboto', sans-serif;\r\n    font-weight: 400;\r\n    font-size: 2rem;\r\n    text-align: center;\r\n}\r\n\r\n.movie-list {\r\n    display: grid;\r\n    justify-items: center;\r\n    grid-template-columns: repeat(3,1fr);\r\n    grid-gap: 1rem;\r\n    margin: 1rem;\r\n    padding: 1rem;\r\n}\r\n\r\n.buttons {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    margin: 1rem;\r\n    padding: 1rem;\r\n    gap: 1rem;\r\n}\r\n\r\n.buttons button {\r\n    padding: 0.5rem;\r\n    border: none;\r\n    border-radius: 0.5rem;\r\n    background-color: #393434;\r\n    cursor: pointer;\r\n}\r\n\r\n.buttons button:hover {\r\n    background-color: #f5c518;\r\n}\r\n\r\n.buttons button:active {\r\n    background-color: #0a0a0a;\r\n}\r\n\r\n.like-button,\r\n.comment-button {\r\n    font-family: 'Courier New', Courier, monospace;\r\n    font-weight: 400;\r\n    color: #5799ef;\r\n    font-size: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AACF;;AAEA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AACF;;AAEA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AACF;;AAEA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AACF","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nmain {\r\n  background-color: #121212;\r\n}\r\n\r\nh2 {\r\n  color: #fff;\r\n  font-family: 'Roboto', sans-serif;\r\n  font-weight: 400;\r\n  font-size: 2rem;\r\n  text-align: center;\r\n}\r\n\r\n.movie-list {\r\n  display: grid;\r\n  justify-items: center;\r\n  grid-template-columns: repeat(3, 1fr);\r\n  grid-gap: 1rem;\r\n  margin: 1rem;\r\n  padding: 1rem;\r\n}\r\n\r\n.buttons {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  margin: 1rem;\r\n  padding: 1rem;\r\n  gap: 1rem;\r\n}\r\n\r\n.buttons button {\r\n  padding: 0.5rem;\r\n  border: none;\r\n  border-radius: 0.5rem;\r\n  background-color: #393434;\r\n  cursor: pointer;\r\n}\r\n\r\n.buttons button:hover {\r\n  background-color: #f5c518;\r\n}\r\n\r\n.buttons button:active {\r\n  background-color: #0a0a0a;\r\n}\r\n\r\n.like-button,\r\n.comment-button {\r\n  font-family: 'Courier New', Courier, monospace;\r\n  font-weight: 400;\r\n  color: #5799ef;\r\n  font-size: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -537,53 +537,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   fetchAndRenderData: () => (/* binding */ fetchAndRenderData)
 /* harmony export */ });
 function fetchAndRenderData() {
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener('DOMContentLoaded', () => {
     // Fetch data from the TVmaze API
-    fetch("https://api.tvmaze.com/schedule?country=US&date=2014-12-01")
-        .then(response => response.json())
-        .then(data => {
-            const movieList = document.querySelector(".movie-list");
+    fetch('https://api.tvmaze.com/schedule?country=US&date=2014-12-01')
+      .then((response) => response.json())
+      .then((data) => {
+        const movieList = document.querySelector('.movie-list');
 
-            data.forEach(show => {
-                const movieDiv = document.createElement("div");
-                movieDiv.className = "movie";
+        data.forEach((show) => {
+          const movieDiv = document.createElement('div');
+          movieDiv.className = 'movie';
 
-                const img = document.createElement("img");
-                img.src = show.show.image ? show.show.image.medium : "placeholder.jpg";
-                img.alt = show.show.name;
+          const img = document.createElement('img');
+          img.src = show.show.image ? show.show.image.medium : 'placeholder.jpg';
+          img.alt = show.show.name;
 
-                const h2 = document.createElement("h2");
-                const maxLength = 30; // Set a maximum length for the movie name (adjust as needed)
+          const h2 = document.createElement('h2');
+          const maxLength = 30; // Set a maximum length for the movie name (adjust as needed)
 
-                if (show.show.name.length > maxLength) {
-                    h2.textContent = show.show.name.substring(0, maxLength) + '...';
-                } else {
-                    h2.textContent = show.show.name;
-                }
+          if (show.show.name.length > maxLength) {
+            h2.textContent = `${show.show.name.substring(0, maxLength)}...`;
+          } else {
+            h2.textContent = show.show.name;
+          }
 
+          const buttonsDiv = document.createElement('div');
+          buttonsDiv.className = 'buttons';
 
-                const buttonsDiv = document.createElement("div");
-                buttonsDiv.className = "buttons";
+          const likeButton = document.createElement('button');
+          likeButton.className = 'like-button';
+          likeButton.textContent = 'Like';
 
-                const likeButton = document.createElement("button");
-                likeButton.className = "like-button";
-                likeButton.textContent = "Like";
-
-                const commentButton = document.createElement("button");
-                commentButton.className = "comment-button";
-                commentButton.textContent = "Comment";
-                buttonsDiv.appendChild(likeButton);
-                buttonsDiv.appendChild(commentButton);
-                movieDiv.appendChild(img);
-                movieDiv.appendChild(h2);
-                movieDiv.appendChild(buttonsDiv);
-                movieList.appendChild(movieDiv);
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching data:", error);
+          const commentButton = document.createElement('button');
+          commentButton.className = 'comment-button';
+          commentButton.textContent = 'Comment';
+          buttonsDiv.appendChild(likeButton);
+          buttonsDiv.appendChild(commentButton);
+          movieDiv.appendChild(img);
+          movieDiv.appendChild(h2);
+          movieDiv.appendChild(buttonsDiv);
+          movieList.appendChild(movieDiv);
         });
-});
+      });
+  });
 }
 
 
@@ -680,4 +676,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundledc298fddbf6e709a4060.js.map
+//# sourceMappingURL=bundle3cde7f0f507860274f23.js.map
