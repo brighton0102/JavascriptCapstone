@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +7,43 @@
 }
 
 main {
-  background-color: #121212;
+  background-color: rgba(1, 0, 74, 0.8);
+}
+
+header {
+  background-color: rgba(1, 21, 74, 0.8);
+  padding: 3rem;
+}
+
+.logo-style {
+  color: rgba(76, 6, 150, 0.88);
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav h3 {
+  font-size: 50px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+ul {
+  display: flex;
+  gap: 70px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 h2 {
