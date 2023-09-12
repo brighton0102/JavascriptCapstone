@@ -33,7 +33,7 @@ export function fetchAndRenderData() {
           const commentButton = document.createElement('button');
           commentButton.className = 'comment-button';
           commentButton.textContent = 'Comment';
-          
+
           buttonsDiv.appendChild(commentButton);
           buttonsDiv.appendChild(reservationButton);
           movieDiv.appendChild(img);
