@@ -20,6 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap);"]);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `* {
   margin: 0;
@@ -28,7 +29,43 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
 }
 
 main {
-  background-color: #121212;
+  background-color: rgba(1, 0, 74, 0.8);
+}
+
+header {
+  background-color: rgba(1, 21, 74, 0.8);
+  padding: 3rem;
+}
+
+.logo-style {
+  color: rgba(76, 6, 150, 0.88);
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav h3 {
+  font-size: 50px;
+  font-family: "Permanent Marker", cursive;
+}
+
+ul {
+  display: flex;
+  gap: 70px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  font-family: "Gothic A1", sans-serif;
 }
 
 h2 {
@@ -73,13 +110,13 @@ h2 {
   background-color: #0a0a0a;
 }
 
-.like-button,
+.reservation-button,
 .comment-button {
   font-family: "Courier New", Courier, monospace;
   font-weight: 400;
   color: #5799ef;
   font-size: 1rem;
-}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AACF;;AAEA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AACF;;AAEA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AACF;;AAEA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AACF","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nmain {\r\n  background-color: #121212;\r\n}\r\n\r\nh2 {\r\n  color: #fff;\r\n  font-family: 'Roboto', sans-serif;\r\n  font-weight: 400;\r\n  font-size: 2rem;\r\n  text-align: center;\r\n}\r\n\r\n.movie-list {\r\n  display: grid;\r\n  justify-items: center;\r\n  grid-template-columns: repeat(3, 1fr);\r\n  grid-gap: 1rem;\r\n  margin: 1rem;\r\n  padding: 1rem;\r\n}\r\n\r\n.buttons {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  margin: 1rem;\r\n  padding: 1rem;\r\n  gap: 1rem;\r\n}\r\n\r\n.buttons button {\r\n  padding: 0.5rem;\r\n  border: none;\r\n  border-radius: 0.5rem;\r\n  background-color: #393434;\r\n  cursor: pointer;\r\n}\r\n\r\n.buttons button:hover {\r\n  background-color: #f5c518;\r\n}\r\n\r\n.buttons button:active {\r\n  background-color: #0a0a0a;\r\n}\r\n\r\n.like-button,\r\n.comment-button {\r\n  font-family: 'Courier New', Courier, monospace;\r\n  font-weight: 400;\r\n  color: #5799ef;\r\n  font-size: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AAAF;;AAGA;EACE,qCAAA;AAAF;;AAGA;EACE,sCAAA;EACA,aAAA;AAAF;;AAGA;EACE,6BAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,eAAA;EACA,wCAAA;AAAF;;AAGA;EACE,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,qBAAA;AAAF;;AAGA;EACE,qBAAA;EACA,eAAA;EACA,WAAA;EACA,oCAAA;AAAF;;AAGA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AAAF;;AAGA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AAAF","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap');\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nmain {\n  background-color: rgba(1, 0, 74, 0.8);\n}\n\nheader {\n  background-color: rgba(1, 21, 74, 0.8);\n  padding: 3rem;\n}\n\n.logo-style {\n  color: rgba(76, 6, 150, 0.88);\n}\n\nnav {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\nnav h3 {\n  font-size: 50px;\n  font-family: 'Permanent Marker', cursive;\n}\n\nul {\n  display: flex;\n  gap: 70px;\n}\n\nul li {\n  list-style-type: none;\n}\n\nul li a {\n  text-decoration: none;\n  font-size: 25px;\n  color: #fff;\n  font-family: 'Gothic A1', sans-serif;\n}\n\nh2 {\n  color: #fff;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 2rem;\n  text-align: center;\n}\n\n.movie-list {\n  display: grid;\n  justify-items: center;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 1rem;\n  margin: 1rem;\n  padding: 1rem;\n}\n\n.buttons {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin: 1rem;\n  padding: 1rem;\n  gap: 1rem;\n}\n\n.buttons button {\n  padding: 0.5rem;\n  border: none;\n  border-radius: 0.5rem;\n  background-color: #393434;\n  cursor: pointer;\n}\n\n.buttons button:hover {\n  background-color: #f5c518;\n}\n\n.buttons button:active {\n  background-color: #0a0a0a;\n}\n\n.reservation-button,\n.comment-button {\n  font-family: 'Courier New', Courier, monospace;\n  font-weight: 400;\n  color: #5799ef;\n  font-size: 1rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -564,15 +601,16 @@ function fetchAndRenderData() {
           const buttonsDiv = document.createElement('div');
           buttonsDiv.className = 'buttons';
 
-          const likeButton = document.createElement('button');
-          likeButton.className = 'like-button';
-          likeButton.textContent = 'Like';
+          const reservationButton = document.createElement('button');
+          reservationButton.className = 'reservation-button';
+          reservationButton.textContent = 'Reservation';
 
           const commentButton = document.createElement('button');
           commentButton.className = 'comment-button';
           commentButton.textContent = 'Comment';
-          buttonsDiv.appendChild(likeButton);
+
           buttonsDiv.appendChild(commentButton);
+          buttonsDiv.appendChild(reservationButton);
           movieDiv.appendChild(img);
           movieDiv.appendChild(h2);
           movieDiv.appendChild(buttonsDiv);
@@ -676,4 +714,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle3cde7f0f507860274f23.js.map
+//# sourceMappingURL=bundle2ee9e3e3c05a723641fa.js.map
