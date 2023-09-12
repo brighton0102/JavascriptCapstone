@@ -21,7 +21,65 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #121212;
+}
+
+h2 {
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.movie-list {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.buttons button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #393434;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #f5c518;
+}
+
+.buttons button:active {
+  background-color: #0a0a0a;
+}
+
+.like-button,
+.comment-button {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  color: #5799ef;
+  font-size: 1rem;
+}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AACJ;;AAEA;EACI,yBAAA;AACJ;;AAEA;EACI,cAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AACJ;;AAEA;EACI,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AACJ;;AAEA;EACI,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AACJ;;AAEA;EACI,yBAAA;AACJ;;AAEA;EACI,yBAAA;AACJ;;AAEA;;EAEI,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AACJ","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nmain {\r\n    background-color: #121212;\r\n}\r\n\r\nh2 {\r\n    color: #ffffff;\r\n    font-family: 'Roboto', sans-serif;\r\n    font-weight: 400;\r\n    font-size: 2rem;\r\n    text-align: center;\r\n}\r\n\r\n.movie-list {\r\n    display: grid;\r\n    justify-items: center;\r\n    grid-template-columns: repeat(3,1fr);\r\n    grid-gap: 1rem;\r\n    margin: 1rem;\r\n    padding: 1rem;\r\n}\r\n\r\n.buttons {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    margin: 1rem;\r\n    padding: 1rem;\r\n    gap: 1rem;\r\n}\r\n\r\n.buttons button {\r\n    padding: 0.5rem;\r\n    border: none;\r\n    border-radius: 0.5rem;\r\n    background-color: #393434;\r\n    cursor: pointer;\r\n}\r\n\r\n.buttons button:hover {\r\n    background-color: #f5c518;\r\n}\r\n\r\n.buttons button:active {\r\n    background-color: #0a0a0a;\r\n}\r\n\r\n.like-button,\r\n.comment-button {\r\n    font-family: 'Courier New', Courier, monospace;\r\n    font-weight: 400;\r\n    color: #5799ef;\r\n    font-size: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -466,6 +524,69 @@ function styleTagTransform(css, styleElement) {
 }
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./src/modules/Api.js":
+/*!****************************!*\
+  !*** ./src/modules/Api.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   fetchAndRenderData: () => (/* binding */ fetchAndRenderData)
+/* harmony export */ });
+function fetchAndRenderData() {
+document.addEventListener("DOMContentLoaded", function () {
+    // Fetch data from the TVmaze API
+    fetch("https://api.tvmaze.com/schedule?country=US&date=2014-12-01")
+        .then(response => response.json())
+        .then(data => {
+            const movieList = document.querySelector(".movie-list");
+
+            data.forEach(show => {
+                const movieDiv = document.createElement("div");
+                movieDiv.className = "movie";
+
+                const img = document.createElement("img");
+                img.src = show.show.image ? show.show.image.medium : "placeholder.jpg";
+                img.alt = show.show.name;
+
+                const h2 = document.createElement("h2");
+                const maxLength = 30; // Set a maximum length for the movie name (adjust as needed)
+
+                if (show.show.name.length > maxLength) {
+                    h2.textContent = show.show.name.substring(0, maxLength) + '...';
+                } else {
+                    h2.textContent = show.show.name;
+                }
+
+
+                const buttonsDiv = document.createElement("div");
+                buttonsDiv.className = "buttons";
+
+                const likeButton = document.createElement("button");
+                likeButton.className = "like-button";
+                likeButton.textContent = "Like";
+
+                const commentButton = document.createElement("button");
+                commentButton.className = "comment-button";
+                commentButton.textContent = "Comment";
+                buttonsDiv.appendChild(likeButton);
+                buttonsDiv.appendChild(commentButton);
+                movieDiv.appendChild(img);
+                movieDiv.appendChild(h2);
+                movieDiv.appendChild(buttonsDiv);
+                movieList.appendChild(movieDiv);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+});
+}
+
+
 /***/ })
 
 /******/ 	});
@@ -549,9 +670,14 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
+/* harmony import */ var _modules_Api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Api.js */ "./src/modules/Api.js");
 
+
+
+// Call the function to fetch and render data
+(0,_modules_Api_js__WEBPACK_IMPORTED_MODULE_1__.fetchAndRenderData)();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlefd9f2b14f08f753feb26.js.map
+//# sourceMappingURL=bundledc298fddbf6e709a4060.js.map
