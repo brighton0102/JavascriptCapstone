@@ -26,15 +26,16 @@ export function fetchAndRenderData() {
           const buttonsDiv = document.createElement('div');
           buttonsDiv.className = 'buttons';
 
-          const likeButton = document.createElement('button');
-          likeButton.className = 'like-button';
-          likeButton.textContent = 'Like';
+          const reservationButton = document.createElement('button');
+          reservationButton.className = 'reservation-button';
+          reservationButton.textContent = 'Reservation';
 
           const commentButton = document.createElement('button');
           commentButton.className = 'comment-button';
           commentButton.textContent = 'Comment';
-          buttonsDiv.appendChild(likeButton);
+          
           buttonsDiv.appendChild(commentButton);
+          buttonsDiv.appendChild(reservationButton);
           movieDiv.appendChild(img);
           movieDiv.appendChild(h2);
           movieDiv.appendChild(buttonsDiv);
