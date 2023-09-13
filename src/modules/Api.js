@@ -1,3 +1,5 @@
+import { createLike, getLikeCount } from './likeInteractions.js';
+
 export function fetchAndRenderData() {
   document.addEventListener('DOMContentLoaded', () => {
     // Fetch data from the TVmaze API
@@ -6,7 +8,7 @@ export function fetchAndRenderData() {
       .then((data) => {
         const movieList = document.querySelector('.movie-list');
 
-        data.forEach((show) => {
+        data.forEach(async (show) => {
           const movieDiv = document.createElement('div');
           movieDiv.className = 'movie';
 
@@ -34,6 +36,27 @@ export function fetchAndRenderData() {
           commentButton.className = 'comment-button';
           commentButton.textContent = 'Comment';
 
+          const likeButton = document.createElement('img');
+          likeButton.className = 'like-button';
+          likeButton.src = 'src/styles/like.png';
+          likeButton.alt = 'Like';
+
+          const likeCounter = document.createElement('span');
+          likeCounter.className = 'like-counter';
+
+          const initialLikeCount = await getLikeCount(show.show.id);
+          likeCounter.textContent = `Likes: ${initialLikeCount}`;
+
+          likeButton.addEventListener('click', async () => {
+            const created = await createLike(show.show.id);
+            if (created) {
+              const count = await getLikeCount(show.show.id);
+              likeCounter.textContent = `Likes: ${count}`;
+            }
+          });
+
+          buttonsDiv.appendChild(likeButton);
+          buttonsDiv.appendChild(likeCounter);
           buttonsDiv.appendChild(commentButton);
           buttonsDiv.appendChild(reservationButton);
           movieDiv.appendChild(img);

@@ -573,6 +573,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   fetchAndRenderData: () => (/* binding */ fetchAndRenderData)
 /* harmony export */ });
+/* harmony import */ var _modules_involvementApi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/involvementApi.js */ "./src/modules/involvementApi.js");
+
+
 function fetchAndRenderData() {
   document.addEventListener('DOMContentLoaded', () => {
     // Fetch data from the TVmaze API
@@ -581,7 +584,7 @@ function fetchAndRenderData() {
       .then((data) => {
         const movieList = document.querySelector('.movie-list');
 
-        data.forEach((show) => {
+        data.forEach(async (show) => {
           const movieDiv = document.createElement('div');
           movieDiv.className = 'movie';
 
@@ -609,6 +612,27 @@ function fetchAndRenderData() {
           commentButton.className = 'comment-button';
           commentButton.textContent = 'Comment';
 
+          const likeButton = document.createElement('img');
+          likeButton.className = 'like-button';
+          likeButton.src = 'src/styles/like.png';
+          likeButton.alt = 'Like';
+
+          const likeCounter = document.createElement('span');
+          likeCounter.className = 'like-counter';
+
+          const initialLikeCount = await (0,_modules_involvementApi_js__WEBPACK_IMPORTED_MODULE_0__.getLikeCount)(show.show.id);
+          likeCounter.textContent = `Likes: ${initialLikeCount}`;
+
+          likeButton.addEventListener('click', async () => {
+            const created = await (0,_modules_involvementApi_js__WEBPACK_IMPORTED_MODULE_0__.createLike)(show.show.id);
+            if (created) {
+              const count = await (0,_modules_involvementApi_js__WEBPACK_IMPORTED_MODULE_0__.getLikeCount)(show.show.id);
+              likeCounter.textContent = `Likes: ${count}`;
+            }
+          });
+
+          buttonsDiv.appendChild(likeButton);
+          buttonsDiv.appendChild(likeCounter);
           buttonsDiv.appendChild(commentButton);
           buttonsDiv.appendChild(reservationButton);
           movieDiv.appendChild(img);
@@ -618,6 +642,59 @@ function fetchAndRenderData() {
         });
       });
   });
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/involvementApi.js":
+/*!***************************************!*\
+  !*** ./src/modules/involvementApi.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createLike: () => (/* binding */ createLike),
+/* harmony export */   getLikeCount: () => (/* binding */ getLikeCount)
+/* harmony export */ });
+// involvementAPI.js
+const apiKey = 'xDXAhv6Wn64RmKots7ec';
+// function for like button
+function createLike(item_id) {
+  return fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/likes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ item_id }),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        return true;
+      } else {
+        console.error('Failed to create a like.');
+        return false;
+      }
+    })
+    .catch((error) => {
+      console.error('Error creating a like:', error);
+      return false;
+    });
+}
+
+// Function for like counts
+function getLikeCount(item_id) {
+  return fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/likes`)
+    .then((response) => response.json())
+    .then((likesData) => {
+      const like = likesData.find((like) => like.item_id === item_id);
+      return like ? like.likes : 0;
+    })
+    .catch((error) => {
+      console.error('Error getting like count:', error);
+      return 0;
+    });
 }
 
 
@@ -705,6 +782,8 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
 /* harmony import */ var _modules_Api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Api.js */ "./src/modules/Api.js");
+/* harmony import */ var _modules_involvementApi_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/involvementApi.js */ "./src/modules/involvementApi.js");
+
 
 
 
@@ -714,4 +793,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2ee9e3e3c05a723641fa.js.map
+//# sourceMappingURL=bundle7d69bb5255e102f0196c.js.map
