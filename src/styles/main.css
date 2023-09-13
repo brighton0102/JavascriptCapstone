@@ -109,3 +109,33 @@ footer {
   background-color: rgba(1, 21, 74, 0.8);
   border: 1cm;
 }
+
+.like-button {
+  width: 30%;
+  height: 40px;
+  margin-left: 10px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.like-button:hover {
+  transform: scale(1.5);
+}
+
+.like-button:active {
+  transform: scale(1);
+}
+
+.like-counter {
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 8px;
+    height: 30px;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    font-weight: 400; 
+  }
