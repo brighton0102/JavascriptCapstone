@@ -1,4 +1,5 @@
 import { createLike, getLikeCount } from './likeInteractions.js';
+import likeImage from '../styles/like.png';
 
 export function fetchAndRenderData() {
   document.addEventListener('DOMContentLoaded', () => {
@@ -38,7 +39,7 @@ export function fetchAndRenderData() {
 
           const likeButton = document.createElement('img');
           likeButton.className = 'like-button';
-          likeButton.src = 'src/styles/like.png';
+          likeButton.src = likeImage;
           likeButton.alt = 'Like';
 
           const likeCounter = document.createElement('span');
