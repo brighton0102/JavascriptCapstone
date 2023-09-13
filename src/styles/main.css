@@ -128,14 +128,28 @@ footer {
 
 .like-counter {
   display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    padding: 8px;
-    height: 30px;
-    color: #fff;
-    font-size: 1.2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-    font-weight: 400; 
-  }
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 8px;
+  height: 30px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}
+
+.showMoreButton {
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  background-color: rgba(1, 21, 74, 0.8);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: -20px;
+  line-height: 35px;
+  letter-spacing: 0.03em;
+  transition: transform 0.3s ease;
+}
