@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.css":
@@ -8,6 +7,7 @@
   \**********************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -116,7 +116,72 @@ h2 {
   font-weight: 400;
   color: #5799ef;
   font-size: 1rem;
-}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AAAF;;AAGA;EACE,qCAAA;AAAF;;AAGA;EACE,sCAAA;EACA,aAAA;AAAF;;AAGA;EACE,6BAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,eAAA;EACA,wCAAA;AAAF;;AAGA;EACE,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,qBAAA;AAAF;;AAGA;EACE,qBAAA;EACA,eAAA;EACA,WAAA;EACA,oCAAA;AAAF;;AAGA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AAAF;;AAGA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AAAF","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap');\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nmain {\n  background-color: rgba(1, 0, 74, 0.8);\n}\n\nheader {\n  background-color: rgba(1, 21, 74, 0.8);\n  padding: 3rem;\n}\n\n.logo-style {\n  color: rgba(76, 6, 150, 0.88);\n}\n\nnav {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\nnav h3 {\n  font-size: 50px;\n  font-family: 'Permanent Marker', cursive;\n}\n\nul {\n  display: flex;\n  gap: 70px;\n}\n\nul li {\n  list-style-type: none;\n}\n\nul li a {\n  text-decoration: none;\n  font-size: 25px;\n  color: #fff;\n  font-family: 'Gothic A1', sans-serif;\n}\n\nh2 {\n  color: #fff;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 2rem;\n  text-align: center;\n}\n\n.movie-list {\n  display: grid;\n  justify-items: center;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 1rem;\n  margin: 1rem;\n  padding: 1rem;\n}\n\n.buttons {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin: 1rem;\n  padding: 1rem;\n  gap: 1rem;\n}\n\n.buttons button {\n  padding: 0.5rem;\n  border: none;\n  border-radius: 0.5rem;\n  background-color: #393434;\n  cursor: pointer;\n}\n\n.buttons button:hover {\n  background-color: #f5c518;\n}\n\n.buttons button:active {\n  background-color: #0a0a0a;\n}\n\n.reservation-button,\n.comment-button {\n  font-family: 'Courier New', Courier, monospace;\n  font-weight: 400;\n  color: #5799ef;\n  font-size: 1rem;\n}\n"],"sourceRoot":""}]);
+}
+
+/* modal */
+#myModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Gothic A1", sans-serif;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.details p {
+  padding-bottom: 15px;
+}
+
+#movieImg {
+  width: 20%;
+  display: block;
+  margin: 0px auto;
+  padding-bottom: 20px;
+}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AAAF;;AAGA;EACE,qCAAA;AAAF;;AAGA;EACE,sCAAA;EACA,aAAA;AAAF;;AAGA;EACE,6BAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,eAAA;EACA,wCAAA;AAAF;;AAGA;EACE,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,qBAAA;AAAF;;AAGA;EACE,qBAAA;EACA,eAAA;EACA,WAAA;EACA,oCAAA;AAAF;;AAGA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AAAF;;AAGA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AAAF;;AAGI,UAAA;AACA;EACE,aAAA,EAAA,sBAAA;EACA,eAAA,EAAA,kBAAA;EACA,UAAA,EAAA,eAAA;EACA,kBAAA,EAAA,wBAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA,EAAA,eAAA;EACA,YAAA,EAAA,gBAAA;EACA,cAAA,EAAA,4BAAA;EACA,8BAAA,EAAA,mBAAA;EACA,oCAAA,EAAA,qBAAA;AAAN;;AAGI,kBAAA;AACA;EACE,yBAAA;EACA,YAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AAAN;;AAGI,qBAAA;AACA;EACE,cAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AAAN;;AAGI;;EAEE,WAAA;EACA,qBAAA;EACA,eAAA;AAAN;;AAGI;EACE,kBAAA;EACA,mBAAA;EACA,oCAAA;AAAN;;AAGI;EACE,aAAA;EACA,8BAAA;EACA,kBAAA;EACA,oCAAA;EACA,eAAA;EACA,oBAAA;AAAN;;AAGI;EACE,oBAAA;AAAN;;AAGI;EACE,UAAA;EACA,cAAA;EACA,gBAAA;EACA,oBAAA;AAAN","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap');\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nmain {\n  background-color: rgba(1, 0, 74, 0.8);\n}\n\nheader {\n  background-color: rgba(1, 21, 74, 0.8);\n  padding: 3rem;\n}\n\n.logo-style {\n  color: rgba(76, 6, 150, 0.88);\n}\n\nnav {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\nnav h3 {\n  font-size: 50px;\n  font-family: 'Permanent Marker', cursive;\n}\n\nul {\n  display: flex;\n  gap: 70px;\n}\n\nul li {\n  list-style-type: none;\n}\n\nul li a {\n  text-decoration: none;\n  font-size: 25px;\n  color: #fff;\n  font-family: 'Gothic A1', sans-serif;\n}\n\nh2 {\n  color: #fff;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 2rem;\n  text-align: center;\n}\n\n.movie-list {\n  display: grid;\n  justify-items: center;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 1rem;\n  margin: 1rem;\n  padding: 1rem;\n}\n\n.buttons {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin: 1rem;\n  padding: 1rem;\n  gap: 1rem;\n}\n\n.buttons button {\n  padding: 0.5rem;\n  border: none;\n  border-radius: 0.5rem;\n  background-color: #393434;\n  cursor: pointer;\n}\n\n.buttons button:hover {\n  background-color: #f5c518;\n}\n\n.buttons button:active {\n  background-color: #0a0a0a;\n}\n\n.reservation-button,\n.comment-button {\n  font-family: 'Courier New', Courier, monospace;\n  font-weight: 400;\n  color: #5799ef;\n  font-size: 1rem;\n}\n\n    /* modal */\n    #myModal {\n      display: none; /* Hidden by default */\n      position: fixed; /* Stay in place */\n      z-index: 1; /* Sit on top */\n      padding-top: 100px; /* Location of the box */\n      left: 0;\n      top: 0;\n      width: 100%; /* Full width */\n      height: 100%; /* Full height */\n      overflow: auto; /* Enable scroll if needed */\n      background-color: rgb(0,0,0); /* Fallback color */\n      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n    }\n    \n    /* Modal Content */\n    .modal-content {\n      background-color: #fefefe;\n      margin: auto;\n      padding: 20px;\n      border: 1px solid #888;\n      width: 70%;\n    }\n    \n    /* The Close Button */\n    .close {\n      color: #aaaaaa;\n      float: right;\n      font-size: 28px;\n      font-weight: bold;\n    }\n    \n    .close:hover,\n    .close:focus {\n      color: #000;\n      text-decoration: none;\n      cursor: pointer;\n    }\n\n    .modal-content h1 {\n      text-align: center;\n      margin-bottom: 20px;\n      font-family: 'Gothic A1', sans-serif;\n    }\n\n    .details {\n      display: grid;\n      grid-template-columns: 1fr 1fr;\n      text-align: center;\n      font-family: 'Gothic A1', sans-serif;\n      font-size: 20px;\n      padding-bottom: 20px;\n    }\n\n    .details p {\n      padding-bottom: 15px;\n    }\n\n    #movieImg {\n      width: 20%;\n      display: block;\n      margin: 0px auto;\n      padding-bottom: 20px;\n    }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -129,6 +194,7 @@ h2 {
   \*****************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /*
@@ -223,6 +289,7 @@ module.exports = function (cssWithMappingToString) {
   \************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 module.exports = function (item) {
@@ -248,6 +315,7 @@ module.exports = function (item) {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -302,6 +370,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var stylesInDOM = [];
@@ -395,6 +464,7 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var memo = {};
@@ -438,6 +508,7 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -457,6 +528,7 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -476,6 +548,7 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -546,6 +619,7 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -563,12 +637,13 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/modules/Api.js":
+/***/ "./src/modules/app.js":
 /*!****************************!*\
-  !*** ./src/modules/Api.js ***!
+  !*** ./src/modules/app.js ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   fetchAndRenderData: () => (/* binding */ fetchAndRenderData)
@@ -602,7 +677,7 @@ function fetchAndRenderData() {
           buttonsDiv.className = 'buttons';
 
           const reservationButton = document.createElement('button');
-          reservationButton.className = 'reservation-button';
+          reservationButton.className = 'reservation-button show-modal';
           reservationButton.textContent = 'Reservation';
 
           const commentButton = document.createElement('button');
@@ -615,11 +690,43 @@ function fetchAndRenderData() {
           movieDiv.appendChild(h2);
           movieDiv.appendChild(buttonsDiv);
           movieList.appendChild(movieDiv);
+
+          const commentBtn = document.querySelector('.comment-button');
+          commentBtn.addEventListener('click', () => {
+            // eslint-disable-next-line linebreak-style
+            document.getElementById('myModal').style.display = 'block';
+          });
+          // end event listerner for opening modal
+          function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+          }
+          document.getElementById('close-icon').addEventListener('click', closeModal);
         });
       });
   });
 }
 
+
+/***/ }),
+
+/***/ "./src/modules/modalComment.js":
+/*!*************************************!*\
+  !*** ./src/modules/modalComment.js ***!
+  \*************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./src/img/sanAndreas.jpg":
+/*!********************************!*\
+  !*** ./src/img/sanAndreas.jpg ***!
+  \********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "sanAndreas.jpg";
 
 /***/ })
 
@@ -674,6 +781,18 @@ function fetchAndRenderData() {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -690,6 +809,29 @@ function fetchAndRenderData() {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -697,21 +839,32 @@ function fetchAndRenderData() {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
-/* harmony import */ var _modules_Api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Api.js */ "./src/modules/Api.js");
+/* harmony import */ var _modules_app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/app.js */ "./src/modules/app.js");
+/* harmony import */ var _modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modalComment.js */ "./src/modules/modalComment.js");
+/* harmony import */ var _modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _img_sanAndreas_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./img/sanAndreas.jpg */ "./src/img/sanAndreas.jpg");
 
 
+
+
+
+const movieImg = document.getElementById('movieImg');
+movieImg.src = _img_sanAndreas_jpg__WEBPACK_IMPORTED_MODULE_3__;
 
 // Call the function to fetch and render data
-(0,_modules_Api_js__WEBPACK_IMPORTED_MODULE_1__.fetchAndRenderData)();
+(0,_modules_app_js__WEBPACK_IMPORTED_MODULE_1__.fetchAndRenderData)();
+(0,_modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2__.openModal)();
+
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2ee9e3e3c05a723641fa.js.map
+//# sourceMappingURL=bundle587f23520abd1fa9202b.js.map
