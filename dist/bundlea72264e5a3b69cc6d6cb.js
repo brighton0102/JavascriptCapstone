@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/main.css":
@@ -7,7 +8,6 @@
   \**********************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -194,7 +194,6 @@ h2 {
   \*****************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /*
@@ -289,7 +288,6 @@ module.exports = function (cssWithMappingToString) {
   \************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (item) {
@@ -315,7 +313,6 @@ module.exports = function (item) {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -370,7 +367,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var stylesInDOM = [];
@@ -464,7 +460,6 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var memo = {};
@@ -508,7 +503,6 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -528,7 +522,6 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -548,7 +541,6 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -619,7 +611,6 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -643,7 +634,6 @@ module.exports = styleTagTransform;
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   fetchAndRenderData: () => (/* binding */ fetchAndRenderData)
@@ -672,7 +662,6 @@ function fetchAndRenderData() {
           } else {
             h2.textContent = show.show.name;
           }
-
           const buttonsDiv = document.createElement('div');
           buttonsDiv.className = 'buttons';
 
@@ -691,42 +680,45 @@ function fetchAndRenderData() {
           movieDiv.appendChild(buttonsDiv);
           movieList.appendChild(movieDiv);
 
-          const commentBtn = document.querySelector('.comment-button');
-          commentBtn.addEventListener('click', () => {
-            // eslint-disable-next-line linebreak-style
-            document.getElementById('myModal').style.display = 'block';
-          });
+          let modalActiveContent;
+          const commentBtns = document.querySelectorAll('.comment-button');
+          const element = document.querySelector('.modal');
+
           // end event listerner for opening modal
-          function closeModal() {
+          window.closeModal = () => {
+            document.getElementById('myModal').innerHTML = '';
             document.getElementById('myModal').style.display = 'none';
+            modalActiveContent = null;
+          };
+          // eslint-disable-next-line no-plusplus
+          for (let i = 0; i < commentBtns.length; i++) {
+            // eslint-disable-next-line no-loop-func
+            commentBtns[i].addEventListener('click', () => {
+              document.getElementById('myModal').style.display = 'block';
+              if (i === commentBtns.length - 1) {
+                modalActiveContent = data[i];
+                const template = `
+                <div class="modal-content">
+                <span onclick="closeModal()" id="close-icon" class="close">&times;</span>
+                  <img src="${modalActiveContent.show.image.medium}" id="movieImg" alt="">
+                  <h1>${modalActiveContent.show.name}</h1>
+                  <div class="details">
+                    <p>Season: ${modalActiveContent.season}</p>
+                    <p>Type: ${modalActiveContent.show.type}</p>
+                    <p>Language: ${modalActiveContent.show.language}</p>
+                    <p>Time: ${modalActiveContent.airtime}</p>
+                  </div>
+                </div>
+                `;
+                element.innerHTML += template;
+              }
+            });
           }
-          document.getElementById('close-icon').addEventListener('click', closeModal);
         });
       });
   });
 }
 
-
-/***/ }),
-
-/***/ "./src/modules/modalComment.js":
-/*!*************************************!*\
-  !*** ./src/modules/modalComment.js ***!
-  \*************************************/
-/***/ (() => {
-
-
-
-/***/ }),
-
-/***/ "./src/img/sanAndreas.jpg":
-/*!********************************!*\
-  !*** ./src/img/sanAndreas.jpg ***!
-  \********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "sanAndreas.jpg";
 
 /***/ })
 
@@ -781,18 +773,6 @@ module.exports = __webpack_require__.p + "sanAndreas.jpg";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -809,29 +789,6 @@ module.exports = __webpack_require__.p + "sanAndreas.jpg";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -839,32 +796,22 @@ module.exports = __webpack_require__.p + "sanAndreas.jpg";
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
 /* harmony import */ var _modules_app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/app.js */ "./src/modules/app.js");
-/* harmony import */ var _modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modalComment.js */ "./src/modules/modalComment.js");
-/* harmony import */ var _modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _img_sanAndreas_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./img/sanAndreas.jpg */ "./src/img/sanAndreas.jpg");
 
 
-
-
-
-const movieImg = document.getElementById('movieImg');
-movieImg.src = _img_sanAndreas_jpg__WEBPACK_IMPORTED_MODULE_3__;
 
 // Call the function to fetch and render data
 (0,_modules_app_js__WEBPACK_IMPORTED_MODULE_1__.fetchAndRenderData)();
-(0,_modules_modalComment_js__WEBPACK_IMPORTED_MODULE_2__.openModal)();
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle587f23520abd1fa9202b.js.map
+//# sourceMappingURL=bundlea72264e5a3b69cc6d6cb.js.map
