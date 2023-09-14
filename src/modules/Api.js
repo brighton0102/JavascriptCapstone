@@ -55,8 +55,8 @@ export function fetchAndRenderData() {
               likeCounter.textContent = `Likes: ${count}`;
             }
           });
-          reservationButton.addEventListener('click',async()=>{
-           popupReservation(show);
+          reservationButton.addEventListener('click', async () => {
+            popupReservation(show);
           });
 
           buttonsDiv.appendChild(likeButton);

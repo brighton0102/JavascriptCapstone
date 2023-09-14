@@ -34,7 +34,13 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/, // Use an absolute path or adjust it as needed
+        use: ['babel-loader'],
+      },
     ],
+
   },
   plugins: [
     new HtmlWebpackPlugin({
