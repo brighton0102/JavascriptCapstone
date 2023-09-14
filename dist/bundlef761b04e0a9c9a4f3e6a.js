@@ -118,6 +118,71 @@ h2 {
   font-size: 1rem;
 }
 
+/* modal */
+#myModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Gothic A1", sans-serif;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.details p {
+  padding-bottom: 15px;
+}
+
+#movieImg {
+  width: 20%;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
 footer {
   display: block;
   justify-content: center;
@@ -130,7 +195,7 @@ footer {
   border-color: black;
   background-color: rgba(1, 21, 74, 0.8);
   border: 1cm;
-}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AAAF;;AAGA;EACE,qCAAA;AAAF;;AAGA;EACE,sCAAA;EACA,aAAA;AAAF;;AAGA;EACE,6BAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,eAAA;EACA,wCAAA;AAAF;;AAGA;EACE,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,qBAAA;AAAF;;AAGA;EACE,qBAAA;EACA,eAAA;EACA,WAAA;EACA,oCAAA;AAAF;;AAGA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AAAF;;AAGA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AAAF;;AAGA;EACE,cAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,sCAAA;EACA,WAAA;AAAF","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap');\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nmain {\n  background-color: rgba(1, 0, 74, 0.8);\n}\n\nheader {\n  background-color: rgba(1, 21, 74, 0.8);\n  padding: 3rem;\n}\n\n.logo-style {\n  color: rgba(76, 6, 150, 0.88);\n}\n\nnav {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\nnav h3 {\n  font-size: 50px;\n  font-family: 'Permanent Marker', cursive;\n}\n\nul {\n  display: flex;\n  gap: 70px;\n}\n\nul li {\n  list-style-type: none;\n}\n\nul li a {\n  text-decoration: none;\n  font-size: 25px;\n  color: #fff;\n  font-family: 'Gothic A1', sans-serif;\n}\n\nh2 {\n  color: #fff;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 2rem;\n  text-align: center;\n}\n\n.movie-list {\n  display: grid;\n  justify-items: center;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 1rem;\n  margin: 1rem;\n  padding: 1rem;\n}\n\n.buttons {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin: 1rem;\n  padding: 1rem;\n  gap: 1rem;\n}\n\n.buttons button {\n  padding: 0.5rem;\n  border: none;\n  border-radius: 0.5rem;\n  background-color: #393434;\n  cursor: pointer;\n}\n\n.buttons button:hover {\n  background-color: #f5c518;\n}\n\n.buttons button:active {\n  background-color: #0a0a0a;\n}\n\n.reservation-button,\n.comment-button {\n  font-family: 'Courier New', Courier, monospace;\n  font-weight: 400;\n  color: #5799ef;\n  font-size: 1rem;\n}\n\nfooter {\n  display: block;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 100%;\n  padding: 8px;\n  height: 30px;\n  color: #fff;\n  border-color: black;\n  background-color: rgba(1, 21, 74, 0.8);\n  border: 1cm;\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AAAF;;AAGA;EACE,qCAAA;AAAF;;AAGA;EACE,sCAAA;EACA,aAAA;AAAF;;AAGA;EACE,6BAAA;AAAF;;AAGA;EACE,aAAA;EACA,6BAAA;EACA,mBAAA;AAAF;;AAGA;EACE,eAAA;EACA,wCAAA;AAAF;;AAGA;EACE,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,qBAAA;AAAF;;AAGA;EACE,qBAAA;EACA,eAAA;EACA,WAAA;EACA,oCAAA;AAAF;;AAGA;EACE,WAAA;EACA,iCAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;AAAF;;AAGA;EACE,aAAA;EACA,qBAAA;EACA,qCAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;AAAF;;AAGA;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,YAAA;EACA,aAAA;EACA,SAAA;AAAF;;AAGA;EACE,eAAA;EACA,YAAA;EACA,qBAAA;EACA,yBAAA;EACA,eAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;EACE,yBAAA;AAAF;;AAGA;;EAEE,8CAAA;EACA,gBAAA;EACA,cAAA;EACA,eAAA;AAAF;;AAIA,UAAA;AACA;EACE,aAAA,EAAA,sBAAA;EACA,eAAA,EAAA,kBAAA;EACA,UAAA,EAAA,eAAA;EACA,kBAAA,EAAA,wBAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA,EAAA,eAAA;EACA,YAAA,EAAA,gBAAA;EACA,cAAA,EAAA,4BAAA;EACA,8BAAA,EAAA,mBAAA;EACA,oCAAA,EAAA,qBAAA;AADF;;AAIA,kBAAA;AACA;EACE,yBAAA;EACA,YAAA;EACA,aAAA;EACA,sBAAA;EACA,UAAA;AADF;;AAIA,qBAAA;AACA;EACE,WAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;AADF;;AAIA;;EAEE,WAAA;EACA,qBAAA;EACA,eAAA;AADF;;AAIA;EACE,kBAAA;EACA,mBAAA;EACA,oCAAA;AADF;;AAIA;EACE,aAAA;EACA,8BAAA;EACA,kBAAA;EACA,oCAAA;EACA,eAAA;EACA,oBAAA;AADF;;AAIA;EACE,oBAAA;AADF;;AAIA;EACE,UAAA;EACA,cAAA;EACA,cAAA;EACA,oBAAA;AADF;;AAIA;EACE,cAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;EACA,WAAA;EACA,YAAA;EACA,YAAA;EACA,WAAA;EACA,mBAAA;EACA,sCAAA;EACA,WAAA;AADF","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700&family=Montserrat:wght@100;200;300;400;500;600&family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Titan+One&display=swap');\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nmain {\n  background-color: rgba(1, 0, 74, 0.8);\n}\n\nheader {\n  background-color: rgba(1, 21, 74, 0.8);\n  padding: 3rem;\n}\n\n.logo-style {\n  color: rgba(76, 6, 150, 0.88);\n}\n\nnav {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\nnav h3 {\n  font-size: 50px;\n  font-family: 'Permanent Marker', cursive;\n}\n\nul {\n  display: flex;\n  gap: 70px;\n}\n\nul li {\n  list-style-type: none;\n}\n\nul li a {\n  text-decoration: none;\n  font-size: 25px;\n  color: #fff;\n  font-family: 'Gothic A1', sans-serif;\n}\n\nh2 {\n  color: #fff;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 2rem;\n  text-align: center;\n}\n\n.movie-list {\n  display: grid;\n  justify-items: center;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 1rem;\n  margin: 1rem;\n  padding: 1rem;\n}\n\n.buttons {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin: 1rem;\n  padding: 1rem;\n  gap: 1rem;\n}\n\n.buttons button {\n  padding: 0.5rem;\n  border: none;\n  border-radius: 0.5rem;\n  background-color: #393434;\n  cursor: pointer;\n}\n\n.buttons button:hover {\n  background-color: #f5c518;\n}\n\n.buttons button:active {\n  background-color: #0a0a0a;\n}\n\n.reservation-button,\n.comment-button {\n  font-family: 'Courier New', Courier, monospace;\n  font-weight: 400;\n  color: #5799ef;\n  font-size: 1rem;\n}\n\n\n/* modal */\n#myModal {\n  display: none; /* Hidden by default */\n  position: fixed; /* Stay in place */\n  z-index: 1; /* Sit on top */\n  padding-top: 100px; /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%; /* Full width */\n  height: 100%; /* Full height */\n  overflow: auto; /* Enable scroll if needed */\n  background-color: rgb(0, 0, 0); /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\n}\n\n/* Modal Content */\n.modal-content {\n  background-color: #fefefe;\n  margin: auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 70%;\n}\n\n/* The Close Button */\n.close {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modal-content h1 {\n  text-align: center;\n  margin-bottom: 20px;\n  font-family: 'Gothic A1', sans-serif;\n}\n\n.details {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  text-align: center;\n  font-family: 'Gothic A1', sans-serif;\n  font-size: 20px;\n  padding-bottom: 20px;\n}\n\n.details p {\n  padding-bottom: 15px;\n}\n\n#movieImg {\n  width: 20%;\n  display: block;\n  margin: 0 auto;\n  padding-bottom: 20px;\n}\n\nfooter {\n  display: block;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 100%;\n  padding: 8px;\n  height: 30px;\n  color: #fff;\n  border-color: black;\n  background-color: rgba(1, 21, 74, 0.8);\n  border: 1cm;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -587,7 +652,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   fetchAndRenderData: () => (/* binding */ fetchAndRenderData)
 /* harmony export */ });
-function fetchAndRenderData() {
+/* harmony import */ var _commentInteraction_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./commentInteraction.js */ "./src/modules/commentInteraction.js");
+
+
+async function fetchAndRenderData() {
   document.addEventListener('DOMContentLoaded', () => {
     // Fetch data from the TVmaze API
     fetch('https://api.tvmaze.com/schedule?country=US&date=2014-12-01')
@@ -628,25 +696,44 @@ function fetchAndRenderData() {
           movieDiv.appendChild(h2);
           movieDiv.appendChild(buttonsDiv);
           movieList.appendChild(movieDiv);
+          localStorage.setItem('movies', JSON.stringify(data));
+        });
+        (0,_commentInteraction_js__WEBPACK_IMPORTED_MODULE_0__.commentModal)();
+      });
+  });
+}
 
-          let modalActiveContent;
-          const commentBtns = document.querySelectorAll('.comment-button');
-          const element = document.querySelector('.modal');
 
-          // end event listerner for opening modal
-          window.closeModal = () => {
-            document.getElementById('myModal').innerHTML = '';
-            document.getElementById('myModal').style.display = 'none';
-            modalActiveContent = null;
-          };
-          // eslint-disable-next-line no-plusplus
-          for (let i = 0; i < commentBtns.length; i++) {
-            // eslint-disable-next-line no-loop-func
-            commentBtns[i].addEventListener('click', () => {
-              document.getElementById('myModal').style.display = 'block';
-              if (i === commentBtns.length - 1) {
-                modalActiveContent = data[i];
-                const template = `
+/***/ }),
+
+/***/ "./src/modules/commentInteraction.js":
+/*!*******************************************!*\
+  !*** ./src/modules/commentInteraction.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   commentModal: () => (/* binding */ commentModal)
+/* harmony export */ });
+function commentModal() {
+  let modalActiveContent;
+  const commentBtns = document.querySelectorAll('.comment-button');
+  const element = document.querySelector('.modal');
+  const data = JSON.parse(localStorage.getItem('movies'));
+  // end event listerner for opening modal
+  window.closeModal = () => {
+    document.getElementById('myModal').innerHTML = '';
+    document.getElementById('myModal').style.display = 'none';
+    modalActiveContent = null;
+  };
+
+  for (let i = 0; i < commentBtns.length; i++) {
+    // eslint-disable-next-line no-loop-func
+    commentBtns[i].addEventListener('click', () => {
+      document.getElementById('myModal').style.display = 'block';
+      modalActiveContent = data[i];
+      const template = `
                 <div class="modal-content">
                 <span onclick="closeModal()" id="close-icon" class="close">&times;</span>
                   <img src="${modalActiveContent.show.image.medium}" id="movieImg" alt="">
@@ -659,13 +746,9 @@ function fetchAndRenderData() {
                   </div>
                 </div>
                 `;
-                element.innerHTML += template;
-              }
-            });
-          }
-        });
-      });
-  });
+      element.innerHTML += template;
+    });
+  }
 }
 
 
@@ -763,4 +846,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle107196ef126cf99abc14.js.map
+//# sourceMappingURL=bundlef761b04e0a9c9a4f3e6a.js.map
