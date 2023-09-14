@@ -109,3 +109,95 @@ footer {
   background-color: rgba(1, 21, 74, 0.8);
   border: 1cm;
 }
+.overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  color: black;
+  justify-content: center; /* Center horizontally */
+  align-items: center; 
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center/* Center vertically */
+}
+
+/* Styles for the popup */
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  color: black;
+  align-items:center ;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center
+}
+.popup h2 {
+  color: black;
+}
+
+/* Style for the reservation form */
+.reservation-form {
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+}
+
+/* Style for input fields in the form */
+.reservation-form input[type="text"],
+.reservation-form input[type="date"] {
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc; /* Add a light gray border */
+border-radius: 4px;
+font-size: 16px;
+}
+
+/* Style for the "Reserve" button */
+.reservation-form button {
+background-color: #e53935; /* Red color for the button */
+color: #fff; /* Text color */
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+border-radius: 4px;
+cursor: pointer;
+margin-top: 20px;
+}
+
+/* Style for the reservations container */
+.reservations-container {
+border: 1px solid #000; /* Black border for the container */
+padding: 10px;
+margin-top: 20px;
+border-radius: 4px;
+}
+
+/* Style for individual reservation details */
+.reservation-details {
+margin-bottom: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e53935; /* Red color for the button */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 2; /* Ensure the button is above other content */
+}
