@@ -6,15 +6,15 @@ import reservationCounter from './modules/counterModule.js';
 fetchAndRenderData();
 
 function updateReservationCount() {
-    const reserveContainer = document.querySelector('.reservation-container');
-    const reservationCountElement = document.querySelector('.reservation-count');
-  
-    if (reserveContainer && reservationCountElement) {
-      const count = reservationCounter(reserveContainer);
-      reservationCountElement.textContent = count;
-    } else {
-      // Handle the case when the elements are not found, e.g., show an error message
-      console.error('Elements not found');
-    }
+  const reserveContainer = document.querySelector('.reservation-container');
+  const reservationCountElement = document.querySelector('.reservation-count');
+
+  if (reserveContainer && reservationCountElement) {
+    const count = reservationCounter(reserveContainer);
+    reservationCountElement.textContent = count;
+  } else {
+    console.error('Elements not found');
   }
-  
+}
+
+window.addEventListener('load', updateReservationCount);
