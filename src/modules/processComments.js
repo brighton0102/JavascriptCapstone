@@ -23,8 +23,7 @@ export async function submitComment(data) {
   })
   .then((response)=> {
     })
-  .then((res)
-  => {
+  .then((res)=> {
 
     }).catch((error) => console.error('Error:', error));
 }
