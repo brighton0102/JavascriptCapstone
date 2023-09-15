@@ -67,11 +67,10 @@ export function fetchAndRenderData() {
             const count = await getLikeCount(show.show.id);
             likeCounter.textContent = `Likes: ${count}`;
           }
-          
-          reservationButton.addEventListener('click', async () => {
-            popupReservation(show);
-          });
+        });
 
+        reservationButton.addEventListener('click', async () => {
+          popupReservation(show);
         });
 
         buttonsDiv.appendChild(likeButton);
