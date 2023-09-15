@@ -1,6 +1,7 @@
 import { createLike, getLikeCount } from './likeInteractions.js';
 import likeImage from '../styles/like.png';
 import { initializeShowMoreButton } from './showMoreButton.js';
+import { popupReservation } from './reservation.js';
 
 export function fetchAndRenderData() {
   document.addEventListener('DOMContentLoaded', async () => {
@@ -66,6 +67,11 @@ export function fetchAndRenderData() {
             const count = await getLikeCount(show.show.id);
             likeCounter.textContent = `Likes: ${count}`;
           }
+          
+          reservationButton.addEventListener('click', async () => {
+            popupReservation(show);
+          });
+
         });
 
         buttonsDiv.appendChild(likeButton);
