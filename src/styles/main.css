@@ -125,6 +125,7 @@ footer {
 }
 
 .showMoreButton {
+  display: none;
   border: none;
   border-radius: 2px;
   color: #fff;
