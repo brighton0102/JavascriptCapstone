@@ -1,6 +1,45 @@
 import { displayReservations } from './displayReservations.js';
-// eslint-disable-next-line no-inner-declarations
+
+// Custom notification function
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+
+  // Add the notification to the document body
+  document.body.appendChild(notification);
+
+  // Remove the notification after a delay (e.g., 3 seconds)
+  setTimeout(() => {
+    document.body.removeChild(notification);
+  }, 3000); // 3000 milliseconds (3 seconds)
+}
+
 export async function popupReservation(show) {
+  let totalReservations; // Declare totalReservations variable
+
+  async function fetchTotalReservations(itemId) {
+    try {
+      const apiKey = 'fDqwhSI3IFsJVLYNBHB6';
+      const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/reservations?item_id=${itemId}`);
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch reservations');
+      }
+
+      const reservations = await response.json();
+      return reservations.length;
+    } catch (error) {
+      console.error('Error fetching total reservations:', error);
+      return 0;
+    }
+  }
+
+  async function displayTotalReservations(itemId) {
+    const total = await fetchTotalReservations(itemId);
+    totalReservations.textContent = `Total Reservations: ${total}`;
+  }
+
   if (show && show.show) {
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -16,6 +55,7 @@ export async function popupReservation(show) {
     closeButton.onclick = () => {
       document.body.removeChild(overlay);
     };
+
     const content = document.createElement('div');
     const img = document.createElement('img');
     img.src = show.show.image ? show.show.image.medium : 'placeholder.jpg';
@@ -47,30 +87,8 @@ export async function popupReservation(show) {
     const reservationsContainer = document.createElement('div');
     reservationsContainer.className = 'reservations-container';
 
-    const totalReservations = document.createElement('p');
+    totalReservations = document.createElement('p'); // Assign totalReservations here
     totalReservations.className = 'total-reservations';
-    // eslint-disable-next-line no-inner-declarations
-    async function fetchTotalReservations(itemId) {
-      try {
-        const apiKey = 'fDqwhSI3IFsJVLYNBHB6';
-        const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/reservations?item_id=${itemId}`);
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch reservations');
-        }
-
-        const reservations = await response.json();
-        return reservations.length;
-      } catch (error) {
-        console.error('Error fetching total reservations:', error);
-        return 0;
-      }
-    }
-    // eslint-disable-next-line no-inner-declarations
-    async function displayTotalReservations(itemId) {
-      const total = await fetchTotalReservations(itemId);
-      totalReservations.textContent = `Total Reservations: ${total}`;
-    }
 
     reservationForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -90,7 +108,7 @@ export async function popupReservation(show) {
         },
         body: JSON.stringify(reservationData),
       });
-      /* eslint-disable no-alert */
+
       if (response.ok) {
         nameInput.value = '';
         startDateInput.value = '';
@@ -98,10 +116,10 @@ export async function popupReservation(show) {
         displayReservations(show.show.id, reservationsContainer);
         displayTotalReservations(show.show.id);
       } else {
-        alert('Reservation failed. Please try again.');
+        showNotification('Reservation failed. Please try again.');
       }
     });
-    /* eslint-enable no-alert */
+
     closeButtonContainer.appendChild(closeButton);
     content.appendChild(closeButtonContainer);
     content.appendChild(img);

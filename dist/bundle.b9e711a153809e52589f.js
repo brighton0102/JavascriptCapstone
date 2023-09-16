@@ -133,6 +133,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   popupComment: () => (/* binding */ popupComment)
 /* harmony export */ });
+async function fetchComments(itemId, apiKey) {
+  try {
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/comments?item_id=${itemId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch comments');
+    }
+    const comments = await response.json();
+    return comments;
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    return [];
+  }
+}
+async function displayComments(itemId, commentsContainer, apiKey) {
+  try {
+    const comments = await fetchComments(itemId, apiKey);
+    commentsContainer.innerHTML = ''; // Clear previous comments
+    if (comments.length > 0) {
+      comments.forEach(comment => {
+        const commentElement = document.createElement('p');
+        commentElement.textContent = `${comment.username}: ${comment.comment}`;
+        commentsContainer.appendChild(commentElement);
+      });
+    } else {
+      const noCommentsElement = document.createElement('p');
+      noCommentsElement.textContent = 'No comments yet.';
+      commentsContainer.appendChild(noCommentsElement);
+    }
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+  }
+}
+async function displayTotalComments(itemId, totalComments, apiKey) {
+  try {
+    const comments = await fetchComments(itemId, apiKey);
+    totalComments.textContent = `Total Comments: ${comments.length}`;
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+  }
+}
 async function popupComment(show) {
   if (show && show.show) {
     const apiKey = 'BD4UTm4EqtClEvK4c92W';
@@ -175,48 +215,6 @@ async function popupComment(show) {
     commentsContainer.className = 'comments-container';
     const totalComments = document.createElement('p');
     totalComments.className = 'total-comments';
-    /* eslint-disable no-inner-declarations */
-    async function fetchComments(itemId) {
-      try {
-        const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/comments?item_id=${itemId}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch comments');
-        }
-        const comments = await response.json();
-        return comments;
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-        return [];
-      }
-    }
-    async function displayComments(itemId) {
-      try {
-        const comments = await fetchComments(itemId);
-        commentsContainer.innerHTML = ''; // Clear previous comments
-        if (comments.length > 0) {
-          comments.forEach(comment => {
-            const commentElement = document.createElement('p');
-            commentElement.textContent = `${comment.username}: ${comment.comment}`;
-            commentsContainer.appendChild(commentElement);
-          });
-        } else {
-          const noCommentsElement = document.createElement('p');
-          noCommentsElement.textContent = 'No comments yet.';
-          commentsContainer.appendChild(noCommentsElement);
-        }
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-      }
-    }
-    async function displayTotalComments(itemId) {
-      try {
-        const comments = await fetchComments(itemId);
-        totalComments.textContent = `Total Comments: ${comments.length}`;
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-      }
-    }
-    /* eslint-enable no-inner-declarations */
     commentForm.addEventListener('submit', async e => {
       e.preventDefault();
       const commentData = {
@@ -235,8 +233,8 @@ async function popupComment(show) {
         if (response.ok) {
           nameInput.value = '';
           commentInput.value = '';
-          displayComments(show.show.id);
-          displayTotalComments(show.show.id);
+          displayComments(show.show.id, commentsContainer, apiKey);
+          displayTotalComments(show.show.id, totalComments, apiKey);
         }
       } catch (error) {
         console.error('Error submitting comment:', error);
@@ -257,8 +255,8 @@ async function popupComment(show) {
     content.appendChild(totalComments);
     content.appendChild(commentForm);
     popup.style.display = 'flex';
-    displayComments(show.show.id);
-    displayTotalComments(show.show.id);
+    displayComments(show.show.id, commentsContainer, apiKey);
+    displayTotalComments(show.show.id, totalComments, apiKey);
   } else {
     console.error('Invalid show data:', show);
   }
@@ -402,8 +400,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _displayReservations_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./displayReservations.js */ "./src/modules/displayReservations.js");
 
-// eslint-disable-next-line no-inner-declarations
+
+// Custom notification function
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+
+  // Add the notification to the document body
+  document.body.appendChild(notification);
+
+  // Remove the notification after a delay (e.g., 3 seconds)
+  setTimeout(() => {
+    document.body.removeChild(notification);
+  }, 3000); // 3000 milliseconds (3 seconds)
+}
+
 async function popupReservation(show) {
+  let totalReservations; // Declare totalReservations variable
+
+  async function fetchTotalReservations(itemId) {
+    try {
+      const apiKey = 'fDqwhSI3IFsJVLYNBHB6';
+      const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/reservations?item_id=${itemId}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch reservations');
+      }
+      const reservations = await response.json();
+      return reservations.length;
+    } catch (error) {
+      console.error('Error fetching total reservations:', error);
+      return 0;
+    }
+  }
+  async function displayTotalReservations(itemId) {
+    const total = await fetchTotalReservations(itemId);
+    totalReservations.textContent = `Total Reservations: ${total}`;
+  }
   if (show && show.show) {
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -440,28 +473,8 @@ async function popupReservation(show) {
     reserveButton.textContent = 'Reserve';
     const reservationsContainer = document.createElement('div');
     reservationsContainer.className = 'reservations-container';
-    const totalReservations = document.createElement('p');
+    totalReservations = document.createElement('p'); // Assign totalReservations here
     totalReservations.className = 'total-reservations';
-    // eslint-disable-next-line no-inner-declarations
-    async function fetchTotalReservations(itemId) {
-      try {
-        const apiKey = 'fDqwhSI3IFsJVLYNBHB6';
-        const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/reservations?item_id=${itemId}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch reservations');
-        }
-        const reservations = await response.json();
-        return reservations.length;
-      } catch (error) {
-        console.error('Error fetching total reservations:', error);
-        return 0;
-      }
-    }
-    // eslint-disable-next-line no-inner-declarations
-    async function displayTotalReservations(itemId) {
-      const total = await fetchTotalReservations(itemId);
-      totalReservations.textContent = `Total Reservations: ${total}`;
-    }
     reservationForm.addEventListener('submit', async e => {
       e.preventDefault();
       const reservationData = {
@@ -478,7 +491,6 @@ async function popupReservation(show) {
         },
         body: JSON.stringify(reservationData)
       });
-      /* eslint-disable no-alert */
       if (response.ok) {
         nameInput.value = '';
         startDateInput.value = '';
@@ -486,10 +498,9 @@ async function popupReservation(show) {
         (0,_displayReservations_js__WEBPACK_IMPORTED_MODULE_0__.displayReservations)(show.show.id, reservationsContainer);
         displayTotalReservations(show.show.id);
       } else {
-        alert('Reservation failed. Please try again.');
+        showNotification('Reservation failed. Please try again.');
       }
     });
-    /* eslint-enable no-alert */
     closeButtonContainer.appendChild(closeButton);
     content.appendChild(closeButtonContainer);
     content.appendChild(img);
@@ -1532,4 +1543,4 @@ window.addEventListener('load', updateReservationCount);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle.8dba9766c8172bcd1f76.js.map
+//# sourceMappingURL=bundle.b9e711a153809e52589f.js.map
