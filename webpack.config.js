@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name][contenthash].js',
+    filename: '[name].[contenthash].js',
     clean: true,
     assetModuleFilename: '[name][ext]',
   },
@@ -31,12 +31,12 @@ module.exports = {
         ,
       },
       {
-        test: /\.(png|svg|jpg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/, // Use an absolute path or adjust it as needed
+        exclude: /node_modules/,
         use: ['babel-loader'],
       },
     ],
