@@ -1,11 +1,56 @@
+async function fetchComments(itemId, apiKey) {
+  try {
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/comments?item_id=${itemId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch comments');
+    }
+    const comments = await response.json();
+    return comments;
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    return [];
+  }
+}
+
+async function displayComments(itemId, commentsContainer, apiKey) {
+  try {
+    const comments = await fetchComments(itemId, apiKey);
+    commentsContainer.innerHTML = ''; // Clear previous comments
+    if (comments.length > 0) {
+      comments.forEach((comment) => {
+        const commentElement = document.createElement('p');
+        commentElement.textContent = `${comment.username}: ${comment.comment}`;
+        commentsContainer.appendChild(commentElement);
+      });
+    } else {
+      const noCommentsElement = document.createElement('p');
+      noCommentsElement.textContent = 'No comments yet.';
+      commentsContainer.appendChild(noCommentsElement);
+    }
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+  }
+}
+
+async function displayTotalComments(itemId, totalComments, apiKey) {
+  try {
+    const comments = await fetchComments(itemId, apiKey);
+    totalComments.textContent = `Total Comments: ${comments.length}`;
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+  }
+}
+
 export async function popupComment(show) {
   if (show && show.show) {
     const apiKey = 'BD4UTm4EqtClEvK4c92W';
+
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
 
     const popup = document.createElement('div');
     popup.className = 'popup';
+
     const closeButtonContainer = document.createElement('div');
     closeButtonContainer.className = 'close-button-container';
 
@@ -23,13 +68,10 @@ export async function popupComment(show) {
 
     const h2 = document.createElement('h2');
     h2.textContent = show.show.name;
-
     const summary = document.createElement('p');
     summary.innerHTML = show.show.summary;
-
     const commentForm = document.createElement('form');
     commentForm.className = 'comment-form';
-
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = 'Your Name';
@@ -51,50 +93,7 @@ export async function popupComment(show) {
 
     const totalComments = document.createElement('p');
     totalComments.className = 'total-comments';
-    /* eslint-disable no-inner-declarations */
-    async function fetchComments(itemId) {
-      try {
-        const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/comments?item_id=${itemId}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch comments');
-        }
-        const comments = await response.json();
-        return comments;
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-        return [];
-      }
-    }
 
-    async function displayComments(itemId) {
-      try {
-        const comments = await fetchComments(itemId);
-        commentsContainer.innerHTML = ''; // Clear previous comments
-        if (comments.length > 0) {
-          comments.forEach((comment) => {
-            const commentElement = document.createElement('p');
-            commentElement.textContent = `${comment.username}: ${comment.comment}`;
-            commentsContainer.appendChild(commentElement);
-          });
-        } else {
-          const noCommentsElement = document.createElement('p');
-          noCommentsElement.textContent = 'No comments yet.';
-          commentsContainer.appendChild(noCommentsElement);
-        }
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-      }
-    }
-
-    async function displayTotalComments(itemId) {
-      try {
-        const comments = await fetchComments(itemId);
-        totalComments.textContent = `Total Comments: ${comments.length}`;
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-      }
-    }
-    /* eslint-enable no-inner-declarations */
     commentForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -116,8 +115,8 @@ export async function popupComment(show) {
         if (response.ok) {
           nameInput.value = '';
           commentInput.value = '';
-          displayComments(show.show.id);
-          displayTotalComments(show.show.id);
+          displayComments(show.show.id, commentsContainer, apiKey);
+          displayTotalComments(show.show.id, totalComments, apiKey);
         }
       } catch (error) {
         console.error('Error submitting comment:', error);
@@ -139,8 +138,8 @@ export async function popupComment(show) {
     content.appendChild(totalComments);
     content.appendChild(commentForm);
     popup.style.display = 'flex';
-    displayComments(show.show.id);
-    displayTotalComments(show.show.id);
+    displayComments(show.show.id, commentsContainer, apiKey);
+    displayTotalComments(show.show.id, totalComments, apiKey);
   } else {
     console.error('Invalid show data:', show);
   }
