@@ -12,7 +12,6 @@ function updateReservationCount() {
   if (reserveContainer && reservationCountElement) {
     const count = reservationCounter(reserveContainer);
     reservationCountElement.textContent = count;
-
   }
 }
 

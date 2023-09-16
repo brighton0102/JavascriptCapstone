@@ -1,35 +1,31 @@
 import { createLike, getLikeCount } from './likeInteractions.js';
 import { popupReservation } from './reservation.js';
-import likeImage from '/src/like.png';
+import likeImage from './like.png';
 
 let loadedItemCount = 0;
-let isLoadingData = false; // Flag to prevent multiple requests
-let selectedCountry = 'US'; // Default country (you can change this as needed)
+let isLoadingData = false;
+let selectedCountry = 'US';
 
 export function fetchAndRenderData() {
   const loadMoreButton = document.querySelector('.load-more-button');
   const movieList = document.querySelector('.movie-list');
-  const itemCountElement = document.querySelector('.item-count'); // Get the count element
+  const itemCountElement = document.querySelector('.item-count');
   itemCountElement.textContent = 'Total Items Loaded: 10';
 
   const loadItems = () => {
     if (isLoadingData) {
-      // If data is already being fetched, prevent multiple requests
       return;
     }
     isLoadingData = true;
 
-    // Clear the existing content in the movieList element
     movieList.innerHTML = '';
 
-    // Fetch data from the TVmaze API based on the selected country
     fetch(`https://api.tvmaze.com/schedule?country=${selectedCountry}&date=2014-12-01&start=${loadedItemCount}`)
       .then((response) => response.json())
       .then(async (data) => {
-        isLoadingData = false; // Reset the flag when data is fetched
+        isLoadingData = false;
 
-        // Limit the loop to load only 10 more items
-        for (let i = 0; i < 10 && loadedItemCount < data.length; i++) {
+        for (let i = 0; i < 10 && loadedItemCount < data.length; i += 1) {
           const show = data[loadedItemCount];
           const movieDiv = document.createElement('div');
           movieDiv.className = 'movie';
@@ -39,7 +35,7 @@ export function fetchAndRenderData() {
           img.alt = show.show.name;
 
           const h2 = document.createElement('h2');
-          const maxLength = 30; 
+          const maxLength = 30;
 
           if (show.show.name.length > maxLength) {
             h2.textContent = `${show.show.name.substring(0, maxLength)}...`;
@@ -65,7 +61,7 @@ export function fetchAndRenderData() {
 
           const likeCounter = document.createElement('span');
           likeCounter.className = 'like-counter';
-
+          // eslint-disable-next-line no-await-in-loop
           const initialLikeCount = await getLikeCount(show.show.id);
           likeCounter.textContent = `Likes: ${initialLikeCount}`;
 
@@ -88,23 +84,25 @@ export function fetchAndRenderData() {
           movieDiv.appendChild(h2);
           movieDiv.appendChild(buttonsDiv);
           movieList.appendChild(movieDiv);
-          loadedItemCount++;
+          loadedItemCount += 1;
         }
 
         itemCountElement.textContent = `Total Items Loaded: ${loadedItemCount}`;
       });
   };
 
-  // Load initial items on page load
   loadItems();
 
   loadMoreButton.addEventListener('click', loadItems);
 
-  // Add event listeners to change the selected country
   const usButton = document.querySelector('.us-button');
   const canadaButton = document.querySelector('.canada-button');
   const indiaButton = document.querySelector('.india-button');
-
+  function resetAndLoadItems() {
+    loadedItemCount = 0;
+    itemCountElement.textContent = 'Total Items Loaded: 0';
+    loadItems();
+  }
   usButton.addEventListener('click', () => {
     selectedCountry = 'US';
     resetAndLoadItems();
@@ -119,11 +117,4 @@ export function fetchAndRenderData() {
     selectedCountry = 'GB';
     resetAndLoadItems();
   });
-
-  // Function to reset and load items
-  function resetAndLoadItems() {
-    loadedItemCount = 0;
-    itemCountElement.textContent = 'Total Items Loaded: 0';
-    loadItems();
-  }
 }
