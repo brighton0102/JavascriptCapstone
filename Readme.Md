@@ -121,10 +121,7 @@ To run the project, execute the following command:
 
 To run the project, execute the "index.html" file in your browser using live server
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- AUTHORS -->
+```
 
 ## 👥 Authors <a name="authors"></a>
 
@@ -140,15 +137,14 @@ To run the project, execute the "index.html" file in your browser using live ser
 
 - GitHub: [DevKaranJ](https://github.com/DevKaranJ)
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Three content sections]**
-- [ ] **[Clickable-elements]**
+- [ ] **Deploy live**
+- [ ] **Add some functionality**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -158,7 +154,7 @@ To run the project, execute the "index.html" file in your browser using live ser
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Sami-Ullah-Tufail/Awesome-books/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -166,7 +162,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, kindly leave a comment below and share it with other web developers and lets enjoy this journey together.
+If you like this project give it a star ⭐
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -174,15 +170,18 @@ If you like this project, kindly leave a comment below and share it with other w
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Eric for the immense support.
+I would like to thank
+
+- Microverse
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-  <!-- LICENSE -->
+<!-- FAQ (optional) -->
+
+<!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT] https://github.com/brighton0102/JavascriptCapstone/blob/dev/LICENSE licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-```
