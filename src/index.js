@@ -12,8 +12,7 @@ function updateReservationCount() {
   if (reserveContainer && reservationCountElement) {
     const count = reservationCounter(reserveContainer);
     reservationCountElement.textContent = count;
-  } else {
-    console.error('Elements not found');
+
   }
 }
 

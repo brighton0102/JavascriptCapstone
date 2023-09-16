@@ -156,6 +156,7 @@
     "fastest-levenshtein": "^1.0.16",
     "faye-websocket": "^0.11.4",
     "fb-watchman": "^2.0.2",
+    "file-loader": "^6.2.0",
     "fill-range": "^7.0.1",
     "finalhandler": "^1.2.0",
     "find-up": "^4.1.0",
