@@ -111,6 +111,8 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  fill: co;
+
 }
 
 .popup {
@@ -127,6 +129,9 @@ footer {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  overflow-y: auto;
+  max-height: 80%;
+  padding-top: 500px;
 }
 
 .popup h2 {
@@ -234,4 +239,174 @@ footer {
 .canada-button:hover,
 .india-button:hover {
   color: #fff;
+}
+#myModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Gothic A1', sans-serif;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.details p {
+  padding-bottom: 15px;
+}
+
+#movieImg {
+  width: 20%;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.comments {
+  text-align: center;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 20px;
+}
+
+.comments p {
+  padding-bottom: 15px;
+}
+
+.form-center {
+  width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  border-radius: 0;
+  border-radius: 8px;
+  padding: 15px 38px 15px 16px;
+  border: 1px solid #cfd8dc;
+  margin-top: 20px;
+  font-family: Poppins, serif, sans serif;
+  font-weight: 400;
+  color: #172b4d;
+  font-size: 17px;
+}
+
+textarea {
+  background: #fff;
+  height: 100px;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  margin-top: 18px;
+  padding: 15px 38px 15px 16px;
+  font-family: Poppins, serif, sans serif;
+  font-weight: 400;
+  color: #172b4d;
+  font-size: 17px;
+}
+
+form input,
+form textarea {
+  display: block;
+}
+
+.comment-btn {
+  font-family: Poppins, serif, sans serif;
+  background-color: #fff;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  color: #8f9394;
+  padding: 12px;
+  text-align: left !important;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 24px;
+  margin-top: 15px;
+  letter-spacing: 0.03em;
+  transition: background-color 0.15s, color 0.15s;
+}
+.comments-container {
+  border: 1px solid #ccc; /* Gray border */
+  padding: 10px;
+  margin-top: 20px;
+  max-height: 300px; /* Add max-height for scrolling */
+  overflow-y: auto; /* Add scrollbars when content overflows */
+}
+
+/* Style individual comments */
+.comments-container p {
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc; /* Add horizontal line between comments */
+}
+
+/* Style the total comments text */
+.total-comments {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+.comment-form input[type="text"],
+.comment-form textarea,
+.comment-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.comment-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background: #0056b3; 
 }

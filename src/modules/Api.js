@@ -1,6 +1,7 @@
 import { createLike, getLikeCount } from './likeInteractions.js';
 import { popupReservation } from './reservation.js';
 import likeImage from './like.png';
+import { popupComment } from './commentInteraction.js';
 
 let loadedItemCount = 0;
 let isLoadingData = false;
@@ -75,6 +76,9 @@ export function fetchAndRenderData() {
           reservationButton.addEventListener('click', async () => {
             popupReservation(show);
           });
+         commentButton.addEventListener('click', async () => {
+            popupComment(show);
+          });
 
           buttonsDiv.appendChild(likeButton);
           buttonsDiv.appendChild(likeCounter);
@@ -88,9 +92,11 @@ export function fetchAndRenderData() {
         }
 
         itemCountElement.textContent = `Total Items Loaded: ${loadedItemCount}`;
+        
+        // // Call commentModal after data is loaded and movie elements are created
+        // commentModal();
       });
   };
-
   loadItems();
 
   loadMoreButton.addEventListener('click', loadItems);
