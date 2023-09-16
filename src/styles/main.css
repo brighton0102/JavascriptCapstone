@@ -111,8 +111,6 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  fill: co;
-
 }
 
 .popup {
@@ -131,7 +129,7 @@ footer {
   flex-direction: column;
   overflow-y: auto;
   max-height: 80%;
-  padding-top: 500px;
+  padding-top: 300px;
 }
 
 .popup h2 {
@@ -164,6 +162,36 @@ footer {
   margin-top: 20px;
 }
 
+textarea {
+  background: #fff;
+  height: 100px;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  margin-top: 18px;
+  padding: 15px 38px 15px 16px;
+  font-family: Poppins, serif, sans serif;
+  font-weight: 400;
+  color: #172b4d;
+  font-size: 17px;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea,
+.comment-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.comment-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
 .buttons button {
   padding: 0.5rem;
   border: none;
@@ -178,6 +206,10 @@ footer {
 
 .buttons button:active {
   background-color: #0a0a0a;
+}
+
+.comment-form button:hover {
+  background: #0056b3;
 }
 
 .reservations-container {
@@ -240,6 +272,7 @@ footer {
 .india-button:hover {
   color: #fff;
 }
+
 #myModal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -333,24 +366,6 @@ input {
   font-size: 17px;
 }
 
-textarea {
-  background: #fff;
-  height: 100px;
-  border: 1px solid #cfd8dc;
-  border-radius: 8px;
-  margin-top: 18px;
-  padding: 15px 38px 15px 16px;
-  font-family: Poppins, serif, sans serif;
-  font-weight: 400;
-  color: #172b4d;
-  font-size: 17px;
-}
-
-form input,
-form textarea {
-  display: block;
-}
-
 .comment-btn {
   font-family: Poppins, serif, sans serif;
   background-color: #fff;
@@ -368,6 +383,7 @@ form textarea {
   letter-spacing: 0.03em;
   transition: background-color 0.15s, color 0.15s;
 }
+
 .comments-container {
   border: 1px solid #ccc; /* Gray border */
   padding: 10px;
@@ -387,26 +403,4 @@ form textarea {
 .total-comments {
   margin-top: 10px;
   font-weight: bold;
-}
-
-
-.comment-form input[type="text"],
-.comment-form textarea,
-.comment-form button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.comment-form button {
-  background: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.comment-form button:hover {
-  background: #0056b3; 
 }

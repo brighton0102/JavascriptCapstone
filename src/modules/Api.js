@@ -76,7 +76,7 @@ export function fetchAndRenderData() {
           reservationButton.addEventListener('click', async () => {
             popupReservation(show);
           });
-         commentButton.addEventListener('click', async () => {
+          commentButton.addEventListener('click', async () => {
             popupComment(show);
           });
 
@@ -92,7 +92,7 @@ export function fetchAndRenderData() {
         }
 
         itemCountElement.textContent = `Total Items Loaded: ${loadedItemCount}`;
-        
+
         // // Call commentModal after data is loaded and movie elements are created
         // commentModal();
       });

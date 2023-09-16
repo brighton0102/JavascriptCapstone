@@ -51,7 +51,7 @@ export async function popupComment(show) {
 
     const totalComments = document.createElement('p');
     totalComments.className = 'total-comments';
-
+    /* eslint-disable no-inner-declarations */
     async function fetchComments(itemId) {
       try {
         const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiKey}/comments?item_id=${itemId}`);
@@ -94,7 +94,7 @@ export async function popupComment(show) {
         console.error('Error fetching comments:', error);
       }
     }
-
+    /* eslint-enable no-inner-declarations */
     commentForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -118,8 +118,6 @@ export async function popupComment(show) {
           commentInput.value = '';
           displayComments(show.show.id);
           displayTotalComments(show.show.id);
-        } else {
-          alert('Comment submission failed. Please try again.');
         }
       } catch (error) {
         console.error('Error submitting comment:', error);
